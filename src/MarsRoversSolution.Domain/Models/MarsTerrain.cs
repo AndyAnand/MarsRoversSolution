@@ -18,5 +18,12 @@ namespace MarsRoversSolution.Domain.Models
 
         public int Height { get; private set; }
         public int Width { get; private set; }
+
+        public bool ContainsPosition(Position position)
+            => position != null
+            && position.EastUnits <= Width
+            && position.EastUnits >= 0
+            && position.NorthUnits <= Height
+            && position.NorthUnits >= 0;
     }
 }

@@ -37,5 +37,32 @@ namespace MarsRoversSolution.Tests
             heigth = -5;
             Assert.Throws<ArgumentException>(() => new Position(width, heigth));
         }
+
+        [Fact]
+        public void PositionIsInsideTerrain()
+        {
+            var width = 5;
+            var heigth = 5;
+
+            var terrain = new MarsTerrain(width, heigth);
+
+            Assert.True(terrain.ContainsPosition(new Position(0, 0)));
+            Assert.True(terrain.ContainsPosition(new Position(5, 5)));
+            Assert.True(terrain.ContainsPosition(new Position(1, 5)));
+            Assert.True(terrain.ContainsPosition(new Position(5, 1)));
+        }
+
+        [Fact]
+        public void PositionIsNotInsideTerrain()
+        {
+            var width = 5;
+            var heigth = 5;
+
+            var terrain = new MarsTerrain(width, heigth);
+
+            Assert.False(terrain.ContainsPosition(new Position(6, 5)));
+            Assert.False(terrain.ContainsPosition(new Position(5, 6)));
+            Assert.False(terrain.ContainsPosition(new Position(6, 6)));
+        }
     }
 }
