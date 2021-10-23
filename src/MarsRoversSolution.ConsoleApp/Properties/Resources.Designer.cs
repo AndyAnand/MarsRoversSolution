@@ -59,18 +59,5 @@ namespace MarsRoversSolution.ConsoleApp.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 5 5
-        ///1 2 N
-        ///LMLMLMLMM
-        ///3 3 E
-        ///MMRMMRMRRM.
-        /// </summary>
-        internal static string Input {
-            get {
-                return ResourceManager.GetString("Input", resourceCulture);
-            }
-        }
     }
 }
