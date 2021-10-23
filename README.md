@@ -28,7 +28,7 @@ cd .\tests\MarsRoversSolution.Tests\
 dotnet test
 ```
 ## Changing the input file
-For submitting new input cases, navigate to the [Input.txt](src/MarsRoversSolution.ConsoleApp/Resources/Input.txt) and alter its content.
+For submitting new input cases, navigate to the `Input\Input.txt` (located in the application `.exe` folder) and alter its content.
 Example:
 
 ```
@@ -36,7 +36,7 @@ Example:
 2 3 S
 MMRMML
 ```
-Will send to a rover exploring a Mars terrain 3 units long to East and 3 units long to North and initially located at 2 units (East), 3 units (North), facing South (S) the commands: Move(M), Move, Rotate Right (R), Move, Move and Rotate Left (L). After running the program, it will output:
+The example above will send to a rover exploring a Mars terrain 3 units long to East and 3 units long to North and initially located at 2 units (East), 3 units (North), facing South (S) the commands: Move(M), Move, Rotate Right (R), Move, Move and Rotate Left (L). After running the program (by executing its `.exe`), it will output:
 ```
 0 1 S
 ```
