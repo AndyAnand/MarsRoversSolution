@@ -26,15 +26,15 @@ namespace MarsRoversSolution.Tests
         [Fact]
         public void TerrainIsRequired()
         {
-            var hoverPosition = new Position(2,3);
+            var roverPosition = new Position(2,3);
             MarsTerrain nullTerrain = null;
 
             Assert.Throws<ArgumentNullException>(()
-                => new MarsRover(nullTerrain, hoverPosition, Domain.Enums.Heading.East));
+                => new MarsRover(nullTerrain, roverPosition, Domain.Enums.Heading.East));
         }
 
         /// <summary>
-        /// Guarantees that a hover always have a RoverState for each Heading possible, 
+        /// Guarantees that a rover always have a RoverState for each Heading possible, 
         /// which is necessary for moving and rotating correctly.
         /// </summary>
         [Fact]
@@ -42,13 +42,13 @@ namespace MarsRoversSolution.Tests
         {
             var allHeadingValues = Enums.GetValues<Heading>();
             var marsTerrain = new MarsTerrain(5, 5);
-            var hoverPosition = new Position(2, 3);
+            var roverPosition = new Position(2, 3);
 
             foreach (var heading in allHeadingValues)
             {
-                var newHover = new MarsRover(marsTerrain, hoverPosition, heading);
+                var newRover = new MarsRover(marsTerrain, roverPosition, heading);
 
-                Assert.NotNull(newHover.RoverState);
+                Assert.NotNull(newRover.RoverState);
             }
         }
 
@@ -60,21 +60,21 @@ namespace MarsRoversSolution.Tests
             var marsTerrain = new MarsTerrain(5, 5);
             var initialEastUnits = 2;
             var initialNorthUnits = 0;
-            var hoverPosition = new Position(initialEastUnits, initialNorthUnits);
-            var hover = new MarsRover(marsTerrain, hoverPosition, initialHeading);
+            var roverPosition = new Position(initialEastUnits, initialNorthUnits);
+            var rover = new MarsRover(marsTerrain, roverPosition, initialHeading);
 
             //Act
-            hover.Move();
-            hover.Move();
-            hover.Move();
+            rover.Move();
+            rover.Move();
+            rover.Move();
 
             //Assert
-            // Hover should continue facing north
-            Assert.True(hover.Heading == initialHeading);
-            // Hover should not move in the East coordinate
-            Assert.True(hover.Position.EastUnits == initialEastUnits);
-            // Hover should move +3 units in the North coordinate
-            Assert.True(hover.Position.NorthUnits == initialNorthUnits + 3);
+            // Rover should continue facing north
+            Assert.True(rover.Heading == initialHeading);
+            // Rover should not move in the East coordinate
+            Assert.True(rover.Position.EastUnits == initialEastUnits);
+            // Rover should move +3 units in the North coordinate
+            Assert.True(rover.Position.NorthUnits == initialNorthUnits + 3);
         }
 
         [Fact]
@@ -85,21 +85,21 @@ namespace MarsRoversSolution.Tests
             var marsTerrain = new MarsTerrain(5, 5);
             var initialEastUnits = 2;
             var initialNorthUnits = 5;
-            var hoverPosition = new Position(initialEastUnits, initialNorthUnits);
-            var hover = new MarsRover(marsTerrain, hoverPosition, initialHeading);
+            var roverPosition = new Position(initialEastUnits, initialNorthUnits);
+            var rover = new MarsRover(marsTerrain, roverPosition, initialHeading);
 
             //Act
-            hover.Move();
-            hover.Move();
-            hover.Move();
+            rover.Move();
+            rover.Move();
+            rover.Move();
 
             //Assert
-            // Hover should continue facing south
-            Assert.True(hover.Heading == initialHeading);
-            // Hover should not move in the East coordinate
-            Assert.True(hover.Position.EastUnits == initialEastUnits);
-            // Hover should move -3 units in the North coordinate
-            Assert.True(hover.Position.NorthUnits == initialNorthUnits - 3);
+            // Rover should continue facing south
+            Assert.True(rover.Heading == initialHeading);
+            // Rover should not move in the East coordinate
+            Assert.True(rover.Position.EastUnits == initialEastUnits);
+            // Rover should move -3 units in the North coordinate
+            Assert.True(rover.Position.NorthUnits == initialNorthUnits - 3);
         }
 
         [Fact]
@@ -110,21 +110,21 @@ namespace MarsRoversSolution.Tests
             var marsTerrain = new MarsTerrain(5, 5);
             var initialEastUnits = 2;
             var initialNorthUnits = 5;
-            var hoverPosition = new Position(initialEastUnits, initialNorthUnits);
-            var hover = new MarsRover(marsTerrain, hoverPosition, initialHeading);
+            var roverPosition = new Position(initialEastUnits, initialNorthUnits);
+            var rover = new MarsRover(marsTerrain, roverPosition, initialHeading);
 
             //Act
-            hover.Move();
-            hover.Move();
-            hover.Move();
+            rover.Move();
+            rover.Move();
+            rover.Move();
 
             //Assert
-            // Hover should continue facing east
-            Assert.True(hover.Heading == initialHeading);
-            // Hover should move +3 in the East coordinate
-            Assert.True(hover.Position.EastUnits == initialEastUnits + 3);
-            // Hover should not move in the North coordinate
-            Assert.True(hover.Position.NorthUnits == initialNorthUnits);
+            // Rover should continue facing east
+            Assert.True(rover.Heading == initialHeading);
+            // Rover should move +3 in the East coordinate
+            Assert.True(rover.Position.EastUnits == initialEastUnits + 3);
+            // Rover should not move in the North coordinate
+            Assert.True(rover.Position.NorthUnits == initialNorthUnits);
         }
 
         [Fact]
@@ -135,20 +135,20 @@ namespace MarsRoversSolution.Tests
             var marsTerrain = new MarsTerrain(5, 5);
             var initialEastUnits = 2;
             var initialNorthUnits = 5;
-            var hoverPosition = new Position(initialEastUnits, initialNorthUnits);
-            var hover = new MarsRover(marsTerrain, hoverPosition, initialHeading);
+            var roverPosition = new Position(initialEastUnits, initialNorthUnits);
+            var rover = new MarsRover(marsTerrain, roverPosition, initialHeading);
 
             //Act
-            hover.Move();
-            hover.Move();
+            rover.Move();
+            rover.Move();
 
             //Assert
-            // Hover should continue facing east
-            Assert.True(hover.Heading == initialHeading);
-            // Hover should move -2 in the East coordinate
-            Assert.True(hover.Position.EastUnits == initialEastUnits - 2);
-            // Hover should not move in the North coordinate
-            Assert.True(hover.Position.NorthUnits == initialNorthUnits);
+            // Rover should continue facing east
+            Assert.True(rover.Heading == initialHeading);
+            // Rover should move -2 in the East coordinate
+            Assert.True(rover.Position.EastUnits == initialEastUnits - 2);
+            // Rover should not move in the North coordinate
+            Assert.True(rover.Position.NorthUnits == initialNorthUnits);
         }
 
         [Fact]
@@ -158,52 +158,52 @@ namespace MarsRoversSolution.Tests
             var marsTerrain = new MarsTerrain(5, 5);
             var initialEastUnits = 2;
             var initialNorthUnits = 5;
-            var hoverPosition = new Position(initialEastUnits, initialNorthUnits);
-            var hover = new MarsRover(marsTerrain, hoverPosition, initialHeading);
+            var roverPosition = new Position(initialEastUnits, initialNorthUnits);
+            var rover = new MarsRover(marsTerrain, roverPosition, initialHeading);
 
             #region Rotating counter clockwise
 
-            hover.Rotate(Direction.Left);
+            rover.Rotate(Direction.Left);
             // West + Left = South
-            Assert.True(hover.Heading == Heading.South);
+            Assert.True(rover.Heading == Heading.South);
 
-            hover.Rotate(Direction.Left);
+            rover.Rotate(Direction.Left);
             // South + Left = East
-            Assert.True(hover.Heading == Heading.East);
+            Assert.True(rover.Heading == Heading.East);
 
-            hover.Rotate(Direction.Left);
+            rover.Rotate(Direction.Left);
             // East + Left = North
-            Assert.True(hover.Heading == Heading.North);
+            Assert.True(rover.Heading == Heading.North);
 
-            hover.Rotate(Direction.Left);
+            rover.Rotate(Direction.Left);
             // North + Left = North
-            Assert.True(hover.Heading == Heading.West);
+            Assert.True(rover.Heading == Heading.West);
 
             #endregion
 
             #region Rotating clockwise
 
-            hover.Rotate(Direction.Right);
+            rover.Rotate(Direction.Right);
             // West + Right = North
-            Assert.True(hover.Heading == Heading.North);
+            Assert.True(rover.Heading == Heading.North);
 
-            hover.Rotate(Direction.Right);
+            rover.Rotate(Direction.Right);
             // North + Right = East
-            Assert.True(hover.Heading == Heading.East);
+            Assert.True(rover.Heading == Heading.East);
 
-            hover.Rotate(Direction.Right);
+            rover.Rotate(Direction.Right);
             // East + Right = South
-            Assert.True(hover.Heading == Heading.South);
+            Assert.True(rover.Heading == Heading.South);
 
-            hover.Rotate(Direction.Right);
+            rover.Rotate(Direction.Right);
             // South + Right = West
-            Assert.True(hover.Heading == Heading.West);
+            Assert.True(rover.Heading == Heading.West);
 
             #endregion
 
-            // Hover should move at all
-            Assert.True(hover.Position.EastUnits == initialEastUnits);
-            Assert.True(hover.Position.NorthUnits == initialNorthUnits);
+            // Rover should move at all
+            Assert.True(rover.Position.EastUnits == initialEastUnits);
+            Assert.True(rover.Position.NorthUnits == initialNorthUnits);
         }
 
         /// <summary>
@@ -216,25 +216,25 @@ namespace MarsRoversSolution.Tests
             var marsTerrain = new MarsTerrain(5, 5);
             var initialEastUnits = 1;
             var initialNorthUnits = 2;
-            var hoverPosition = new Position(initialEastUnits, initialNorthUnits);
-            var hover = new MarsRover(marsTerrain, hoverPosition, initialHeading);
+            var roverPosition = new Position(initialEastUnits, initialNorthUnits);
+            var rover = new MarsRover(marsTerrain, roverPosition, initialHeading);
             var finalPosition = new Position(1,3);
             var finalHeading = Heading.North;
 
             // Commands: LMLMLMLMM
-            hover.Rotate(Direction.Left);
-            hover.Move();
-            hover.Rotate(Direction.Left);
-            hover.Move();
-            hover.Rotate(Direction.Left);
-            hover.Move();
-            hover.Rotate(Direction.Left);
-            hover.Move();
-            hover.Move();
+            rover.Rotate(Direction.Left);
+            rover.Move();
+            rover.Rotate(Direction.Left);
+            rover.Move();
+            rover.Rotate(Direction.Left);
+            rover.Move();
+            rover.Rotate(Direction.Left);
+            rover.Move();
+            rover.Move();
 
-            Assert.True(hover.Position.EastUnits == finalPosition.EastUnits);
-            Assert.True(hover.Position.NorthUnits == finalPosition.NorthUnits);
-            Assert.True(hover.Heading == finalHeading);
+            Assert.True(rover.Position.EastUnits == finalPosition.EastUnits);
+            Assert.True(rover.Position.NorthUnits == finalPosition.NorthUnits);
+            Assert.True(rover.Heading == finalHeading);
         }
 
         /// <summary>
@@ -247,26 +247,26 @@ namespace MarsRoversSolution.Tests
             var marsTerrain = new MarsTerrain(5, 5);
             var initialEastUnits = 3;
             var initialNorthUnits = 3;
-            var hoverPosition = new Position(initialEastUnits, initialNorthUnits);
-            var hover = new MarsRover(marsTerrain, hoverPosition, initialHeading);
+            var roverPosition = new Position(initialEastUnits, initialNorthUnits);
+            var rover = new MarsRover(marsTerrain, roverPosition, initialHeading);
             var finalPosition = new Position(5, 1);
             var finalHeading = Heading.East;
 
             // Commands: MMRMMRMRRM
-            hover.Move();
-            hover.Move();
-            hover.Rotate(Direction.Right);
-            hover.Move();
-            hover.Move();
-            hover.Rotate(Direction.Right);
-            hover.Move();
-            hover.Rotate(Direction.Right);
-            hover.Rotate(Direction.Right);
-            hover.Move();
+            rover.Move();
+            rover.Move();
+            rover.Rotate(Direction.Right);
+            rover.Move();
+            rover.Move();
+            rover.Rotate(Direction.Right);
+            rover.Move();
+            rover.Rotate(Direction.Right);
+            rover.Rotate(Direction.Right);
+            rover.Move();
 
-            Assert.True(hover.Position.EastUnits == finalPosition.EastUnits);
-            Assert.True(hover.Position.NorthUnits == finalPosition.NorthUnits);
-            Assert.True(hover.Heading == finalHeading);
+            Assert.True(rover.Position.EastUnits == finalPosition.EastUnits);
+            Assert.True(rover.Position.NorthUnits == finalPosition.NorthUnits);
+            Assert.True(rover.Heading == finalHeading);
         }
     }
 }

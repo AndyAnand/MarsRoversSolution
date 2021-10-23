@@ -42,5 +42,7 @@ namespace MarsRoversSolution.Domain.Models
                 _northUnits = Guard.Against.Negative(value, nameof(value));
             }
         }
+
+        public override string ToString() => $"{EastUnits} {NorthUnits}";
     }
 }

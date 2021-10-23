@@ -1,4 +1,5 @@
 ﻿using Ardalis.GuardClauses;
+using EnumsNET;
 using MarsRoversSolution.Domain.Enums;
 using MarsRoversSolution.Domain.Interfaces;
 using MarsRoversSolution.Domain.Models.States;
@@ -55,5 +56,8 @@ namespace MarsRoversSolution.Domain.Models
         {
             RoverState.Move();
         }
+
+        public override string ToString()
+            => $"{Position} {Heading.AsString(EnumFormat.Description)}";
     }
 }
