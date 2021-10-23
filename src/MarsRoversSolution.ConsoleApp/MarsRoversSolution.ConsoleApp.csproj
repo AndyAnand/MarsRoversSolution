@@ -24,4 +24,8 @@
     <Folder Include="Resources\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MarsRoversSolution.Domain\MarsRoversSolution.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
