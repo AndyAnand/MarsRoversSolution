@@ -25,5 +25,8 @@ namespace MarsRoversSolution.Domain.Models
             && position.EastUnits >= 0
             && position.NorthUnits <= Height
             && position.NorthUnits >= 0;
+
+        public override string ToString() 
+            => $"{Width} {Height}";
     }
 }

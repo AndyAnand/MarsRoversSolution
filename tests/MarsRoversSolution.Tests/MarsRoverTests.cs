@@ -24,6 +24,16 @@ namespace MarsRoversSolution.Tests
         }
 
         [Fact]
+        public void InitialPositionShouldBeInsideTerrain()
+        {
+            Position outOfBoundsPosition = new Position(7, 42);
+            var marsTerrain = new MarsTerrain(5, 5);
+
+            Assert.Throws<ArgumentException>(()
+                => new MarsRover(marsTerrain, outOfBoundsPosition, Domain.Enums.Heading.East));
+        }
+
+        [Fact]
         public void TerrainIsRequired()
         {
             var roverPosition = new Position(2,3);

@@ -22,6 +22,10 @@ namespace MarsRoversSolution.Domain.Models
         {
             Position = Guard.Against.Null(initialPosition, nameof(initialPosition));
             Terrain = Guard.Against.Null(terrain, nameof(terrain));
+            Guard.Against.InvalidInput(Position, nameof(Position), 
+                (Position) => Terrain.ContainsPosition(Position), 
+                $"The position {Position} is invalid. " +
+                $"It is not inside the given Mars {Terrain} terrain.");
 
             _headingToRoverStateMapper = new Dictionary<Heading, IRoverState>()
             {
